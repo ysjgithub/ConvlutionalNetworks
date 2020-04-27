@@ -2,7 +2,7 @@ import numpy as np
 import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
-from ConvlutionalNetworks import Conv, Flattan, MaxPooling, SoftMax, Relu, Model,FC
+from ConvlutionalNetworks.ConvlutionalNetworks import Conv, Flattan, MaxPooling, SoftMax, Relu, Model,FC
 
 model = Model([
         Conv(1, 32, 3, 1, 1),

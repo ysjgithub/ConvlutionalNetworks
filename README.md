@@ -7,7 +7,7 @@ cite this project in your project
 - train in cpu
 - you can start with mnist dataset,run example.py
 ```
-from ConvlutionalNetworks import Conv, Flattan, MaxPooling, SoftMax, Relu, Model
+from ConvlutionalNetworks.ConvlutionalNetworks import Conv, Flattan, MaxPooling, SoftMax, Relu, Model,FC
 
 model = Model([
         Conv(1, 32, 3, 1, 1),
