@@ -45,7 +45,7 @@ class Conv(object):
             for j in range(self.kernel):
                 zz= x[:,:,:,i:i + w, j:j + h] * y
                 deltacore[:,:,i,j] += np.sum(zz,axis=(0,3,4)).reshape((output_channel,input_channel))/mini_batch
-        print(deltacore.mean())
+        # print(deltacore.mean())
         self.core-=deltacore*0.005
 
     def backword(self,m):
