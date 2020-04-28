@@ -5,7 +5,7 @@ cite this project in your project
 
 - use code like follow as your model
 - train in cpu
-- you can start with mnist dataset,run example.py
+- you can start with mnist dataset,run /example/demo_mnist.py
 ```
 from ConvlutionalNetworks.ConvlutionalNetworks import Conv, Flattan, MaxPooling, SoftMax, Relu, Model,FC
 
