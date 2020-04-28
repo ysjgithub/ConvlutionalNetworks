@@ -1,4 +1,3 @@
-import pickle
 class Model(object):
     def __init__(self,seq):
         self.sequential = seq
@@ -16,10 +15,3 @@ class Model(object):
             l = self.sequential[i]
             l.backword(g)
             g = l.gradient
-    def save(self,path):
-        with open(path, 'w') as f:  # open file with write-mode
-            picklestring = pickle.dump(self.sequential, f)
-
-    def load(self,path):
-        with open(path, 'r') as f:
-            summer = pickle.load(f)  # read file and build object

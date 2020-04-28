@@ -43,13 +43,12 @@ def one_hot(x, K):
 
 def mytest():
     correct = 0
-    for x,y in test_loader:
+    for x, y in test_loader:
         x = x.numpy()
         y = one_hot(np.array(y.numpy()),10)
         s = model.forword(x)
-        correct+=np.sum(np.argmax(y,axis=1)==np.argmax(s,axis=1))
+        correct += np.sum(np.argmax(y,axis=1)==np.argmax(s,axis=1))
     print("test_correct",correct)
-
 
 iter = 0
 for i in range(2):
@@ -62,7 +61,7 @@ for i in range(2):
         print(np.argmax(y,axis=1),np.argmax(s,axis=1))
         print(np.sum(np.argmax(y,axis=1)==np.argmax(s,axis=1)))
         model.backword(r)
-        if iter%1000 == 0:
+        if iter % 1000 == 0:
             mytest()
 
 
