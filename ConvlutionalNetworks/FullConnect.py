@@ -13,7 +13,7 @@ class full_connect(object):
 
     def update(self,y):
         mini_batch,output_nums = y.shape
-        self.weights-=0.1*np.dot(self.input_maps.T,y)/mini_batch
+        self.weights= self.weights*(1-0.005*0.01/mini_batch)-0.01*np.dot(self.input_maps.T,y)/mini_batch
 
     def backword(self,y):
         # 11 * 10

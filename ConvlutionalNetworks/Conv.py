@@ -9,13 +9,14 @@ class Conv(object):
         self.stride=stride
         self.padding=padding
         self.output_maps=[]
-        self.core = np.random.randn(output_channel,input_channel,kernel,kernel)*np.sqrt(2/(input_channel))
+        self.core = np.array([ np.array([np.random.randn(kernel,kernel)*np.sqrt(2/(kernel*kernel)) for _ in range(input_channel)]) for __ in range(output_channel)])
         self.gradient =None
         self.input_maps = None
     def forword(self,x):
         # 输入为 128 * 3 * 10 *10
         self.output_maps =[]
         self.input_maps = x
+        print(x.shape)
         x = np.pad(x, ((0, 0), (0, 0), (self.padding, self.padding), (self.padding, self.padding)), 'constant')
         mini_batch,c,w,h = x.shape
         neww,newh = int((w-self.kernel)/self.stride+1),int((h-self.kernel)/self.stride+1)
@@ -45,8 +46,10 @@ class Conv(object):
             for j in range(self.kernel):
                 zz= x[:,:,:,i:i + w, j:j + h] * y
                 deltacore[:,:,i,j] += np.sum(zz,axis=(0,3,4)).reshape((output_channel,input_channel))/mini_batch
-        # print(deltacore.mean())
-        self.core-=deltacore*0.005
+        print(deltacore.mean())
+        learn_rate =0.005
+        lambda_r = 0.001
+        self.core = self.core*(1-learn_rate*lambda_r/mini_batch) - deltacore*0.005
 
     def backword(self,m):
         # 输入为 output_maps，更新core的

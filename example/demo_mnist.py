@@ -5,16 +5,19 @@ from torch.utils.data import DataLoader
 from ConvlutionalNetworks.ConvlutionalNetworks import Conv, Flattan, MaxPooling, SoftMax, Relu, Model,FC
 
 model = Model([
-        Conv(1, 32, 3, 1, 1),
+        Conv(1, 6, 3, 1, 1),
         Relu(),
         MaxPooling(2, 2),
-        Conv(32, 64, 3, 1, 1),
+        Conv(6, 16, 3, 1, 1),
+        Relu(),
+        MaxPooling(2, 2),
+        Conv(16, 32, 3, 1, 1),
         Relu(),
         MaxPooling(2, 2),
         Flattan(),
-        FC(3136,96),
+        FC(288,32),
         Relu(),
-        FC(96,10),
+        FC(32,10),
         Relu(),
         SoftMax()
     ])
